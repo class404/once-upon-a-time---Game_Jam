@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://2ux422db6ack"]
+
+[ext_resource type="Texture2D" uid="uid://c1ai3owxynxrw" path="res://assets/Dungeon/Gate/Ground_Close.png" id="1_hudsw"]
+[ext_resource type="Texture2D" uid="uid://b5eettlgl13or" path="res://assets/Dungeon/Gate/Gate_Open.png" id="1_xfvdi"]
+[ext_resource type="Script" uid="uid://clg53rcv7kb07" path="res://scripts/gate.gd" id="2_xwxio"]
+[ext_resource type="AudioStream" uid="uid://veo2mqopby67" path="res://assets/SFX/gate_open.mp3" id="4_wi8tm"]
+[ext_resource type="AudioStream" uid="uid://cvwcteb5r0oe5" path="res://assets/SFX/right.mp3" id="5_nbnmf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wi8tm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hudsw")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xfvdi")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwxio"]
+size = Vector2(10, 11)
+
+[node name="Gate" type="AnimatedSprite2D"]
+z_index = -1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_wi8tm")
+animation = &"open"
+autoplay = "open"
+script = ExtResource("2_xwxio")
+
+[node name="entered_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entered_area"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_xwxio")
+
+[node name="open" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-94, 3.3333359)
+scale = Vector2(0.33333334, 0.33333334)
+stream = ExtResource("4_wi8tm")
+
+[node name="right" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_nbnmf")
+
+[connection signal="body_entered" from="entered_area" to="." method="_on_entered_area_body_entered"]

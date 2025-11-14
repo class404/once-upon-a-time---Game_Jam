@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c68bllsi7ajx3"
+path="res://.godot/imported/cartoon-bite-39234 (mp3cut.net).mp3-92e99a78d2d18a906b1c27de126d7749.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/cartoon-bite-39234 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/cartoon-bite-39234 (mp3cut.net).mp3-92e99a78d2d18a906b1c27de126d7749.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
